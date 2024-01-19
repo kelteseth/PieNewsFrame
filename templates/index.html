@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Image Display</title>
+    <style>
+        /* Modern CSS for fullscreen image and title overlay with blurry background */
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .overlay {
+            font-family: system-ui, sans-serif; /* Use system font */
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for text */
+            padding: 10px;
+            
+            
+            backdrop-filter: blur(5px);
+            max-width: 80%; /* Set a maximum width for text container */
+        }
+
+        h1, p {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    </style>
+    <script>
+        // JavaScript to refresh the page periodically
+        setTimeout(function(){
+           window.location.reload(1);
+        }, 60000 * 60); // Refresh every 1 ours
+    </script>
+</head>
+<body>
+    <!-- Display the image and title -->
+    {% if data.generated_image %}
+    <img src="data:image/jpg;base64,{{ data.generated_image }}" alt="News Image">
+    <div class="overlay">
+    <h3>{{ data.title }}</h3>
+        <p>{{ data.description }}</p>
+    </div>
+    {% else %}
+        No image!
+        <p>{{ data.title }}</p>
+    {% endif %}
+</body>
+</html>
