@@ -7,12 +7,12 @@ Shows an chatGPT generated image based on the current spiegel.de headline to dis
 ```
 
 ```
-# Windows
+#  Windows
 python -m venv venv
-.\venv\Scripts\activate
+.\.venv\Scripts\activate
 # Unix
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 # Install
 pip install -r requirements.txt
 flask run
